@@ -1,116 +1,89 @@
-\# Element Zapper
+<div align="center">
+  <img src="icons/icon128.png" alt="Element Zapper Logo" width="84" height="84" />
+  <h1>Element Zapper</h1>
+  <p>A lightweight Manifest V3 Chrome extension to visually inspect, preview, and permanently hide unwanted elements on any website.</p>
 
+  <p>
+    <img src="https://img.shields.io/badge/Manifest-V3-6366f1?style=flat-square" alt="Manifest V3" />
+    <img src="https://img.shields.io/badge/Version-2.0.0-34d399?style=flat-square" alt="Version 2.0.0" />
+    <img src="https://img.shields.io/badge/Chrome-114%2B-475569?style=flat-square" alt="Chrome 114+" />
+    <img src="https://img.shields.io/badge/License-MIT-94a3b8?style=flat-square" alt="MIT License" />
+  </p>
+</div>
 
+---
 
-A lightweight Manifest V3 Chrome extension for visually inspecting, previewing, and permanently hiding unwanted elements on any website.
+## Preview
 
+<p align="center">
+  <img src="assets/preview.png" alt="Element Zapper Preview" width="760" />
+</p>
 
+## Features
 
-!\[Manifest V3](https://img.shields.io/badge/Manifest-V3-6366f1?style=flat-square)
+* **Visual Picker & Live Inspector:** Hover over any page element to see its tag and dimensions, then click to inspect its attributes, text preview, CSS selector, and live match count before hiding it.
+* **Parent & Child Stepping:** Walk up or down the DOM tree directly from the inspector card without re-picking.
+* **Smart Match Modes:** Automatically detects external ad domains, `rel="sponsored"` links, and wrapper containers using CSS `:has()` rules so dynamically injected ads with randomized IDs or paths stay hidden after refreshing.
+* **Persistent, Flicker-Free Hiding:** Applies saved rules per domain at `document_start` via `USER`-origin CSS (`chrome.scripting.insertCSS`), bypassing strict `style-src` CSP headers and outranking inline `!important` styles.
+* **Hardened Overlay UI:** Runs inside a closed Shadow DOM using Trusted Types compliant DOM construction (zero `.innerHTML`), Chrome's Top Layer Popover API, and a self-healing watchdog so the picker stays visible on sites with anti-overlay scripts.
+* **Instant Restore & Manual Selectors:** Restore individual elements or clear an entire domain from the popup without reloading, or add custom CSS selectors manually.
 
-!\[Version](https://img.shields.io/badge/Version-2.0.0-34d399?style=flat-square)
+## Installation
 
-!\[License](https://img.shields.io/badge/License-MIT-94a3b8?style=flat-square)
+### Option 1: Download Release (Recommended)
+1. Go to the [Releases](https://github.com/ahmadluqmanpl/element-zapper/releases) page and download the latest `element-zapper-v2.0.0.zip`.
+2. Extract the archive to a permanent folder on your computer.
+3. Open Chrome and navigate to `chrome://extensions/`.
+4. Turn on **Developer mode** in the top-right corner.
+5. Click **Load unpacked** and select the extracted folder.
 
+### Option 2: Clone from Source
+```bash
+git clone [https://github.com/ahmadluqmanpl/element-zapper.git](https://github.com/ahmadluqmanpl/element-zapper.git)
+```
+Then load the cloned `element-zapper` directory via **Load unpacked** in `chrome://extensions/`.
 
+## How to Use
 
-!\[Popup Preview](assets/popup-preview.png)
+1. Open any website and click the **Element Zapper** icon in your toolbar.
+2. Click **Pick Element to Block** (press `Esc` anytime to exit).
+3. Click the element you want to remove to freeze it in the **Inspect Element** card.
+4. Refine the target with **Select Parent / Select Child**, switch between **Smart Match Modes**, or edit the CSS selector manually while checking the highlighted matches on screen.
+5. Click **Block Element**. The rule is saved locally for that domain and applied automatically on every visit.
 
-!\[Inspector Preview](assets/inspector-preview.png)
+## Permissions & Privacy
 
+Element Zapper runs entirely offline inside your browser. It makes **zero external network requests** and collects no telemetry, browsing history, or analytics.
 
-
-
-
-\## Features
-
-
-
-\* \*\*Visual Element Picker \& Live Inspector:\*\* Hover to preview tag names and dimensions, then click to freeze an element and inspect its attributes, dimensions, content snippet, and live match count before blocking.
-
-\* \*\*Parent \& Child Stepping:\*\* Fine-tune selections up or down the DOM tree without re-picking.
-
-\* \*\*Smart Match Modes for Dynamic Ads:\*\* Automatically detects external ad link domains, `rel="sponsored"` attributes, and wrapper containers using CSS `:has()` selectors so ads with randomized IDs or URLs stay hidden across reloads.
-
-\* \*\*Persistent, Flicker-Free Blocking:\*\* Injects rules at `document\_start` via `USER`-origin CSS (`chrome.scripting.insertCSS`), bypassing strict `style-src` CSP policies and outranking inline `!important` styles.
-
-\* \*\*Hardened Overlay Engine:\*\* Uses a closed Shadow DOM, Trusted Types compliant DOM construction (zero `.innerHTML`), Chrome's Top Layer Popover API, and a self-healing watchdog so the picker stays visible on sites with strict CSP or anti-overlay scripts.
-
-\* \*\*Instant Restore \& Manual Rules:\*\* Manage or restore blocked elements per domain from the popup without reloading the page, or paste custom CSS selectors directly.
-
-
-
-\## Installation (Load Unpacked)
-
-
-
-1\. Download the latest release ZIP from the \*\*Releases\*\* page (or clone this repository):
-
-&#x20;  ```bash
-
-&#x20;  git clone \[https://github.com/ahmadluqmanpl/element-zapper.git](https://github.com/ahmadluqmanpl/element-zapper.git)
-
-&#x20;  ```
-
-2\. Open Chrome and navigate to `chrome://extensions/`.
-
-3\. Enable \*\*Developer mode\*\* in the top-right corner.
-
-4\. Click \*\*Load unpacked\*\* and select the extracted `element-zapper` folder.
-
-5\. Pin \*\*Element Zapper\*\* to your toolbar for quick access.
-
-
-
-\## Usage
-
-
-
-1\. Open any website and click the \*\*Element Zapper\*\* toolbar icon.
-
-2\. Click \*\*Pick Element to Block\*\* (or press `Esc` anytime to cancel).
-
-3\. Click any page element to open the \*\*Inspect Element\*\* card.
-
-4\. Adjust the target using \*\*Select Parent / Select Child\*\*, choose a \*\*Smart Match Mode\*\* pill, or edit the CSS selector directly while watching the highlighted matches.
-
-5\. Click \*\*Block Element\*\*. The rule is saved for that hostname and applied automatically on future visits.
-
-
-
-\## Permissions Explained
-
-
-
-Chrome extensions with broad site access deserve transparency. Element Zapper makes \*\*zero external network requests\*\* and contains no analytics or tracking.
-
-
-
-| Permission | Why It Is Needed |
-
+| Permission | Purpose |
 | :--- | :--- |
+| `storage` | Stores your blocked CSS selectors per hostname in `chrome.storage.local` and tracks active tab stylesheets in `chrome.storage.session`. |
+| `activeTab` | Reads the active tab's domain when opening the popup and starts the element picker on demand. |
+| `scripting` | Injects and removes `USER`-origin CSS rules cleanly so hidden elements do not flicker on load and restore immediately. |
+| `<all_urls>` | Enables automatic blocking at `document_start` on any website where you have saved rules. |
 
-| `storage` | Saves your blocked CSS selectors per domain locally in `chrome.storage.local` and tracks active tab styles in `chrome.storage.session`. |
+## Project Structure
 
-| `activeTab` | Reads the current tab's hostname when you open the popup and activates the picker on demand. |
+```text
+element-zapper/
+├── assets/
+│   └── preview.png
+├── icons/
+│   ├── icon16.png
+│   ├── icon32.png
+│   ├── icon48.png
+│   ├── icon128.png
+│   └── icon.svg
+├── manifest.json
+├── background.js
+├── content.js
+├── popup.html
+├── popup.css
+├── popup.js
+├── CHANGELOG.md
+└── LICENSE
+```
 
-| `scripting` | Injects and removes `USER`-origin blocking CSS rules cleanly across page loads and restores. |
+## License
 
-| `<all\_urls>` | Allows `background.js` and `content.js` to apply your saved rules automatically at `document\_start` on any website you choose to block elements on. |
-
-
-
-\## Privacy
-
-
-
-All blocked rules are stored exclusively in your browser's local storage. No browsing history, URLs, or selectors ever leave your device.
-
-
-
-\## License
-
-
-
-Released under the \[MIT License](LICENSE).
-
+Licensed under the [MIT License](LICENSE).
