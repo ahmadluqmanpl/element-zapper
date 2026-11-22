@@ -1,0 +1,14 @@
+# Packaged extension artifacts & private signing keys
+*.crx
+*.pem
+*.zip
+dist/
+release/
+
+# OS & editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log
