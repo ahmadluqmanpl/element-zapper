@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Element Zapper v2.0.0</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Element Zapper</h1>
+          <span id="version-badge" class="version-badge">v2.0.0</span>
+        </div>
+      </div>
+
+      <div id="site-pill" class="site-pill" title="Current website">
+        <span id="site-dot" class="site-dot"></span>
+        <span id="site-badge" class="site-badge">Loading...</span>
+      </div>
+    </header>
+
+    <div id="restricted-notice" class="notice hidden">
+      Chrome blocks extensions from modifying internal browser pages or the Web Store. Open any regular website to pick elements.
+    </div>
+
+    <div id="error-banner" class="error-banner hidden"></div>
+
+    <main id="main-content" class="main-content">
+      <button id="pick-btn" class="pick-btn" type="button">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="8"></circle>
+          <line x1="12" y1="2" x2="12" y2="6"></line>
+          <line x1="12" y1="18" x2="12" y2="22"></line>
+          <line x1="2" y1="12" x2="6" y2="12"></line>
+          <line x1="18" y1="12" x2="22" y2="12"></line>
+        </svg>
+        <span>Pick Element to Block</span>
+      </button>
+
+      <form id="manual-form" class="manual-form">
+        <input
+          id="manual-selector-input"
+          class="manual-input"
+          type="text"
+          spellcheck="false"
+          autocomplete="off"
+          placeholder="Paste CSS selector manually..."
+        />
+        <button id="manual-add-btn" class="manual-add-btn" type="submit">Add</button>
+      </form>
+
+      <section class="rules-section">
+        <div class="rules-header">
+          <div class="rules-title-wrap">
+            <h2>Blocked Elements</h2>
+            <span id="rule-count" class="count-pill">0</span>
+          </div>
+          <button id="clear-all-btn" class="text-btn hidden" type="button">Restore All</button>
+        </div>
+
+        <ul id="rules-list" class="rules-list"></ul>
+
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon" aria-hidden="true">✦</div>
+          <p class="empty-title">Page is clean</p>
+          <p class="empty-sub">No elements are blocked on this domain yet.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Saved per domain</span>
+      <span id="footer-version">v2.0.0</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
