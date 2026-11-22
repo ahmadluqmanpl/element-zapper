@@ -13,11 +13,22 @@
 
 ---
 
-## Preview
+<h2 align="center">Preview</h2>
 
-<p align="center">
-  <img src="assets/preview.png" alt="Element Zapper Preview" width="760" />
-</p>
+<table>
+  <tr>
+    <th align="center">Popup Manager</th>
+    <th align="center">In-Page Element Inspector</th>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="assets/popup-preview.png" alt="Popup Preview" width="480" />
+    </td>
+    <td align="center" width="50%">
+      <img src="assets/inspector-preview.png" alt="Inspector Preview" width="480" />
+    </td>
+  </tr>
+</table>
 
 ## Features
 
@@ -67,7 +78,8 @@ Element Zapper runs entirely offline inside your browser. It makes **zero extern
 ```text
 element-zapper/
 ├── assets/
-│   └── preview.png
+│   ├── popup-preview.png
+│   └── inspector-preview.png
 ├── icons/
 │   ├── icon16.png
 │   ├── icon32.png
